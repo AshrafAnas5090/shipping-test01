@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 94" width="330" height="94" role="img">
+
+  <g transform="translate(8 10)">
+    <path d="M9 32 C21 5 69 3 82 31" fill="none" stroke="#0069A9" stroke-width="6"/>
+    <path d="M35 31 C47 4 95 3 108 31" fill="none" stroke="#E63A2B" stroke-width="6"/>
+    <path d="M9 38 C23 67 69 68 82 40" fill="none" stroke="#0069A9" stroke-width="6"/>
+    <path d="M35 40 C50 68 95 68 108 40" fill="none" stroke="#E63A2B" stroke-width="6"/>
+  </g>
+  <text x="124" y="48" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" letter-spacing=".5" fill="#0069A9">COSCO</text>
+  <text x="124" y="71" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800" letter-spacing="2.2" fill="#0069A9">SHIPPING</text>
+
+</svg>
