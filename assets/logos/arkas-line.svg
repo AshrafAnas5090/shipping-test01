@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 92" role="img" aria-label="Arkas Line">
-<rect width="330" height="92" rx="10" fill="none"/>
-<g transform="translate(9 18)"><path d="M0 28 24 0l24 28-24 28z" fill="#155ba6"/>
-<path d="M24 0 48 28 24 21 0 28z" fill="#f58220"/>
-<path d="M24 21 48 28 24 56z" fill="#0c7fa3"/></g>
-<text x="75" y="50" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="900" fill="#155ba6">ARKAS</text>
-<text x="206" y="50" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="800" fill="#627f92">LINE</text>
-</svg>
