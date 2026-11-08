@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 90" width="340" height="90" role="img">
+
+  <rect x="4" y="13" width="64" height="64" rx="12" fill="#62B6D9"/>
+  <polygon points="36.00,20.00 40.12,36.44 55.55,29.41 45.26,42.89 60.37,50.56 43.43,50.92 46.85,67.52 36.00,54.50 25.15,67.52 28.57,50.92 11.63,50.56 26.74,42.89 16.45,29.41 31.88,36.44" fill="#fff"/>
+  <text x="88" y="59" font-family="Arial,Helvetica,sans-serif" font-size="37" font-weight="800" letter-spacing="1.5" fill="#111820">MAERSK</text>
+
+</svg>

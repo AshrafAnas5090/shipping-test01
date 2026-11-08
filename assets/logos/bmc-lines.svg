@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 90" width="300" height="90" role="img">
+
+  <g transform="translate(8 12)" fill="none" stroke="#163D73" stroke-width="4.2" stroke-linecap="round">
+    <path d="M48 5c-28 3-40 27-29 48"/>
+    <path d="M61 3c-34 3-51 31-40 57" opacity=".78"/>
+    <path d="M73 5c-33 7-45 34-30 55" opacity=".55"/>
+  </g>
+  <text x="83" y="51" font-family="Arial Black,Arial,Helvetica,sans-serif" font-size="38" font-weight="900" letter-spacing=".5" fill="#B5232B">BMC</text>
+  <text x="178" y="51" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="500" fill="#6A727B">LINES</text>
+  <text x="85" y="70" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#173D73">LINE SHIPPING</text>
+
+</svg>
