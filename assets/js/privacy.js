@@ -1,1 +1,0 @@
-document.getElementById('off').addEventListener('click',function(){try{localStorage.setItem('ak_analytics_off','1');this.textContent='Analytics disabled / تم تعطيل التحليلات';}catch{this.textContent='Use your browser Do Not Track setting';}});
