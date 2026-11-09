@@ -1,0 +1,109 @@
+/* Adaptive country/seaport picker. Desktop and mobile share one result renderer. */
+.port-dropdown.ak-selector-open,
+.origin-country-list.ak-selector-open{
+  position:fixed!important;display:flex!important;flex-direction:column;
+  z-index:2147483000!important;
+  right:auto!important;bottom:auto!important;
+  box-sizing:border-box;overflow:hidden;
+  background:#fff;border:1px solid #d6e5ed;border-radius:13px;
+  box-shadow:0 18px 42px rgba(15,63,87,.19);
+  padding:6px;color:#173e55;
+  direction:ltr;
+}
+.port-dropdown.ak-selector-open{padding:8px}
+.ak-selector-open .ak-selector-options{
+  flex:0 1 auto;min-height:0;
+  overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+  max-height:calc(5 * 62px);scrollbar-width:thin;
+}
+.origin-country-list.ak-selector-open .ak-selector-options{max-height:calc(5 * 48px)}
+.origin-country-list.ak-selector-open .origin-country-option{
+  display:flex;align-items:center;gap:10px;width:100%;height:48px;
+  padding:8px 10px;border:0;border-radius:7px;background:transparent;
+  color:#173e55;font:inherit;font-size:13px;text-align:start;cursor:pointer;
+}
+.origin-country-list.ak-selector-open .origin-option-flag{
+  width:30px;height:22px;flex:none;object-fit:cover;
+  border-radius:3px;border:1px solid rgba(23,62,85,.12);
+}
+.ak-selector-open .port-dropdown-head,
+.ak-selector-open .port-hint{flex:none}
+.ak-selector-open .origin-country-option:hover,
+.ak-selector-open .origin-country-option.active,
+.ak-selector-open .port-option:hover,
+.ak-selector-open .port-option.active{background:#eff8fd}
+html[dir="rtl"] .ak-selector-open{direction:rtl}
+/* Shared accessible mobile modal: search never scrolls with results. */
+body.ak-location-lock{overflow:hidden}
+.ak-location-dialog{display:none}
+.ak-location-dialog[open]{display:flex;flex-direction:column}
+@media(max-width:640px){
+  .ak-location-dialog{
+    position:fixed;inset:0;margin:0;padding:0;
+    box-sizing:border-box;width:100%;max-width:none;
+    height:100%;height:100dvh;max-height:none;
+    overflow:hidden;border:0;border-radius:0;
+    background:#f7fbfe;color:#173e55;
+    box-shadow:none;
+  }
+  .ak-location-dialog::backdrop{background:rgba(8,37,55,.35)}
+  .ak-location-dialog-header{
+    flex:none;display:flex;align-items:center;justify-content:space-between;
+    padding:18px 18px 12px;gap:12px;background:#fff;
+    border-bottom:1px solid #e6eff5;
+  }
+  .ak-location-dialog-title{font-size:18px;font-weight:800;color:#173e55}
+  .ak-location-dialog-close{
+    display:grid;place-items:center;width:40px;height:40px;
+    border:1px solid #dce9ef;border-radius:10px;background:#fff;
+    color:#3b5b6d;font-size:25px;cursor:pointer;
+  }
+  .ak-location-dialog-search-row{
+    flex:none;display:flex;align-items:center;gap:10px;
+    margin:14px 14px 10px;padding:0 12px;min-height:50px;
+    border:1px solid #9fcfe1;border-radius:12px;
+    background:#eef8fd;color:#547487;
+  }
+  .ak-location-dialog-search{width:100%;height:48px;min-width:0;
+    padding:0;border:0;outline:0;background:transparent;color:#153e57;
+    font:600 16px system-ui,sans-serif;
+  }
+  .ak-location-dialog-results{
+    flex:1;min-height:0;display:flex;flex-direction:column;
+    padding:0 12px 12px;overflow:hidden;
+  }
+  .ak-location-dialog .port-dropdown.ak-selector-open,
+  .ak-location-dialog .origin-country-list.ak-selector-open{
+    position:static!important;inset:auto!important;
+    flex:1;min-height:0;display:flex!important;flex-direction:column;
+    width:100%!important;max-width:none!important;max-height:none!important;
+    box-shadow:none;border:1px solid #e2edf3;border-radius:13px;
+    padding:5px;background:#fff;
+  }
+  .ak-location-dialog .ak-selector-options{flex:1;min-height:0;max-height:none!important;overflow-y:auto}
+  .ak-location-dialog .origin-country-option{min-height:52px;height:52px}
+  .ak-location-dialog .port-dropdown-head{position:relative;top:auto;flex:none}
+  .ak-location-dialog .port-hint{flex:none;max-height:78px;overflow:auto}
+  .ak-location-dialog .port-option{min-height:62px}
+}
+@media(min-width:641px){
+  /* Compact popovers remain five rows tall; viewport fitting is computed in JS. */
+  .port-dropdown.ak-selector-open .ak-selector-options{max-height:min(355px,53vh)}
+  .origin-country-list.ak-selector-open .ak-selector-options{max-height:min(240px,53vh)}
+}
+
+/* Port tiers: simple scrollable headings inside the existing five-row list. */
+.ak-selector-open .port-group-heading{
+  position:sticky;top:0;z-index:1;
+  margin:4px 2px 2px;padding:7px 10px;
+  background:#eef7fb;color:#476e82;border-radius:6px;
+  font-size:10px;font-weight:800;letter-spacing:.035em;
+}
+.ak-selector-open .port-option-side .port-type{
+  font-size:8px;letter-spacing:0;max-width:120px;text-align:end;line-height:1.2;
+}
+html[dir="rtl"] .ak-selector-open .port-option-side .port-type{text-align:start}
+@media(max-width:640px){
+  .ak-location-dialog .port-group-heading{font-size:11px}
+  .ak-location-dialog .port-option-side .port-type{max-width:110px}
+}

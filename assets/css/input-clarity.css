@@ -1,0 +1,190 @@
+/* Editable controls use one visual language across route search and tracking. */
+:root{--input-fill:#eff8fd;--input-border:#bdd9e8;--input-ink:#173e55;--input-focus:#008bc2}
+#tracking{scroll-margin-top:116px}
+.nav-actions .nav-track{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 14px;border:1px solid #9bcfe5;border-radius:10px;background:#e8f6fd;color:#006f9c;font-size:12px;font-weight:800;white-space:nowrap;text-decoration:none;transition:background .15s,border-color .15s}
+.nav-actions .nav-track:hover{background:#d8effb;border-color:#008bc2}.nav-actions .nav-track:focus-visible{outline:3px solid #008bc2;outline-offset:3px}
+.quick-port .port-combo input,.quick-port .route-location input,.quote-form-compact input:not([type=radio]):not([type=checkbox]):not([type=hidden]),.quote-form-compact select,.quote-form-compact textarea,.ak-track #trackingReference,.ak-track #akCarrierSearch,.ak-track #akCarrierToggle{background:var(--input-fill);border:1px solid var(--input-border);border-radius:10px;color:var(--input-ink);min-height:48px;box-shadow:none;transition:border-color .15s,box-shadow .15s,background .15s}
+.quick-port .port-combo input,.quick-port .route-location input{width:100%;padding:12px 14px;font-size:14px;box-sizing:border-box}.ak-track #trackingReference,.ak-track #akCarrierSearch{padding:12px 14px;box-sizing:border-box}.ak-track #akCarrierToggle{padding:10px 13px;align-items:center;min-height:49px}.ak-track #trackingReference{font-size:16px}.ak-track #akCarrierToggle{font-size:16px}
+.quick-port input::placeholder,.quote-form-compact input::placeholder,.ak-track input::placeholder{color:#567789;opacity:1}
+.quick-port .port-combo input:focus,.quick-port .route-location input:focus,.quote-form-compact input:not([type=radio]):not([type=checkbox]):focus,.quote-form-compact select:focus,.quote-form-compact textarea:focus,.ak-track #trackingReference:focus,.ak-track #akCarrierSearch:focus,.ak-track #akCarrierToggle:focus-visible{outline:0;border-color:var(--input-focus);box-shadow:0 0 0 3px #008bc21c;background:#f7fcff}
+.quick-port .port-combo.has-port input{padding-inline-start:43px;padding-inline-end:38px}.quick-port .port-selected-flag{left:12px}html[dir=rtl] .quick-port .port-selected-flag{left:auto;right:12px}.quick-port .port-clear{right:7px}html[dir=rtl] .quick-port .port-clear{right:auto;left:7px}
+.input-guidance{display:block;margin-top:6px;color:#527386;font-size:10px;line-height:1.5;font-weight:400}.quick-port .quick-label{display:block;margin-bottom:8px;color:#234c63}.ak-track label{margin-bottom:9px}.quick-port .port-selected-detail{margin-top:4px}
+.ak-track #trackingReference[aria-invalid=true],.quick-port .port-combo.is-invalid-port input,.quote-form-compact.validation-active input:invalid,.quote-form-compact.validation-active select:invalid{border-color:#b7453d;box-shadow:0 0 0 2px #b7453d18;background:#fff8f6}
+.quote-form-compact input:disabled,.quote-form-compact select:disabled{background:#f0f2f4;color:#75818a;border-color:#d9dfe4}.ak-track #akCarrierSearch{font-size:16px}
+@media(max-width:1100px) and (min-width:761px){.desktop-nav{gap:12px}.desktop-nav a{font-size:11px}.nav-actions{gap:8px}.nav-actions .nav-track{padding:8px 10px;font-size:11px}}
+@media(max-width:760px){#tracking{scroll-margin-top:105px}.nav-actions{gap:7px}.nav-actions .nav-track{display:inline-flex;min-height:38px;padding:8px 10px;font-size:11px}.quick-port .port-combo input,.quick-port .route-location input,.quote-form-compact input:not([type=radio]):not([type=checkbox]),.quote-form-compact select,.quote-form-compact textarea{font-size:16px}.input-guidance{font-size:11px}.nav-actions>.language-toggle{display:inline-flex}.brand-copy strong{font-size:11px}.brand-copy span{display:none}.quick-port .port-combo input{min-height:48px}}
+@media(max-width:480px){.site-nav{gap:8px;padding-inline:10px}.nav-actions{gap:6px}.nav-actions .nav-track{padding:8px;font-size:10px}.nav-actions>.language-toggle{width:34px;min-width:34px;padding:5px;justify-content:center}.nav-actions>.language-toggle .language-toggle-icon{display:none}.menu-toggle{width:34px;min-width:34px}.brand>img{width:38px;height:38px}.brand-copy strong{font-size:9px}.brand{gap:6px}}
+@media(max-width:390px){.site-nav>.brand .brand-copy{display:none}.nav-actions .nav-track{font-size:11px;padding:8px 11px}}
+@media(prefers-reduced-motion:reduce){.nav-actions .nav-track,.quick-port input,.ak-track input{transition:none}}
+.ak-track-reference>label:after,.quick-port>label:after,.quote-route-fields label[for=origin]:after,.quote-route-fields label[for=destination]:after{content:' *';color:#176d94;font-weight:800}
+
+
+/* V4.29 — Header typography and tracking CTA only. Existing brand palette unchanged. */
+@media (min-width:1241px){
+  .site-nav{gap:18px;padding-inline:18px}
+  .desktop-nav{gap:clamp(14px,1.55vw,26px);font-size:clamp(18px,1.33vw,20px);font-weight:850}
+  .nav-actions{gap:10px}
+}
+.nav-actions .nav-track{
+  position:relative;isolation:isolate;overflow:hidden;flex-shrink:0;
+  min-height:52px;padding:11px 19px;border-radius:13px;
+  font-size:clamp(18px,1.45vw,21px);font-weight:900;line-height:1.15;
+  background:#e8f6fd;color:#006f9c;border-color:#9bcfe5;
+  box-shadow:0 0 0 0 rgba(0,139,194,0);
+  animation:ak-nav-track-pulse 3.8s ease-in-out infinite;
+  transition:background .2s,border-color .2s,transform .2s;
+}
+.nav-actions .nav-track::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 24%,rgba(255,255,255,.72) 48%,transparent 72%);
+  transform:translateX(-130%);animation:ak-nav-track-sheen 6s ease-in-out infinite;
+}
+.nav-actions .nav-track:hover{background:#d8effb;border-color:#008bc2;transform:translateY(-1px)}
+@keyframes ak-nav-track-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(0,139,194,0)}
+  45%{box-shadow:0 0 0 5px rgba(0,139,194,.17)}
+  70%{box-shadow:0 0 0 0 rgba(0,139,194,0)}
+}
+@keyframes ak-nav-track-sheen{
+  0%,42%,100%{transform:translateX(-130%)}
+  62%{transform:translateX(130%)}
+}
+/* Collapse only the long navigation row before it can collide with the enlarged labels. */
+@media (min-width:901px) and (max-width:1240px){
+  .desktop-nav{display:none}
+  .menu-toggle{display:grid}
+  .site-nav{gap:16px}
+}
+@media (max-width:900px){
+  .nav-actions .nav-track{min-height:42px;padding:9px 13px;font-size:15px;border-radius:11px}
+}
+@media (max-width:640px){
+  .site-nav{gap:7px}
+  .nav-actions{margin-left:auto;gap:6px}
+  .nav-actions .nav-track{min-height:40px;padding:8px 10px;font-size:13px}
+}
+@media (max-width:390px){
+  .nav-actions .nav-track{font-size:12px;padding:8px 9px}
+}
+@media (prefers-reduced-motion:reduce){
+  .nav-actions .nav-track,.nav-actions .nav-track::after{animation:none;transition:none}
+}
+
+/* V4.30 — Origin only: two searchable controls, one visual input surface. */
+.port-combo.origin-composite .origin-composite-row{
+  display:flex;align-items:stretch;min-width:0;min-height:48px;
+  background:var(--input-fill);border:1px solid var(--input-border);
+  border-radius:10px;position:relative;
+}
+.port-combo.origin-composite .origin-composite-row:focus-within{
+  border-color:var(--input-focus);box-shadow:0 0 0 3px #008bc21c;background:#f7fcff;
+}
+.port-combo.origin-composite .origin-country-side,
+.port-combo.origin-composite .origin-port-side{position:relative;min-width:0;display:flex;align-items:center}
+.port-combo.origin-composite .origin-country-side{flex:0 0 46%;padding-inline-start:8px}
+.port-combo.origin-composite .origin-port-side{flex:1 1 54%;padding-inline-end:4px}
+.port-combo.origin-composite .origin-internal-separator{display:none}
+.port-combo.origin-composite .origin-country-flag{font-size:19px;line-height:1;flex:none;margin-inline-end:5px}
+.port-combo.origin-composite .origin-country-flag[hidden]{display:none}
+.port-combo.origin-composite .port-control{flex:1;min-width:0}
+.port-combo.origin-composite .origin-country-input,
+.port-combo.origin-composite .port-control input{
+  display:block;box-sizing:border-box;width:100%;min-width:0;min-height:46px;height:46px;
+  padding:7px 5px;border:0!important;box-shadow:none!important;border-radius:0!important;
+  outline:0;background:transparent!important;color:var(--input-ink);font-size:13px;font-weight:650;
+}
+.port-combo.origin-composite .origin-country-input::placeholder,
+.port-combo.origin-composite .port-control input::placeholder{color:#567789;opacity:1}
+.port-combo.origin-composite .port-control input{padding-inline:5px 29px!important}
+.port-combo.origin-composite .port-selected-flag{display:none!important}
+.port-combo.origin-composite .port-selected-detail{display:none!important}
+.port-combo.origin-composite .port-clear{inset-inline-end:3px;right:auto;left:auto}
+.port-combo.origin-composite .origin-country-list{
+  position:absolute;z-index:1501;inset-inline-start:0;top:calc(100% + 8px);
+  width:max(240px,100%);max-width:min(340px,85vw);max-height:300px;overflow:auto;
+  background:#fff;border:1px solid #d6e5ed;border-radius:12px;
+  box-shadow:0 18px 40px rgba(15,63,87,.16);padding:5px;display:none;
+}
+.port-combo.origin-composite .origin-country-list.open{display:block}
+.port-combo.origin-composite .origin-country-option{
+  display:flex;align-items:center;gap:9px;width:100%;min-height:39px;
+  padding:8px 10px;border:0;border-radius:7px;background:transparent;color:#173e55;
+  font:inherit;font-size:13px;text-align:start;cursor:pointer;
+}
+.port-combo.origin-composite .origin-country-option span:first-child{font-size:20px;line-height:1}
+.port-combo.origin-composite .origin-country-option:hover,
+.port-combo.origin-composite .origin-country-option.active{background:#eff8fd}
+.port-combo.origin-composite.is-invalid-port .origin-composite-row{border-color:#b7453d}
+.port-combo.origin-composite .port-dropdown{top:calc(100% + 8px)}
+@media(max-width:760px){
+  .port-combo.origin-composite .origin-country-input,
+  .port-combo.origin-composite .port-control input{font-size:14px}
+  .port-combo.origin-composite .origin-country-side{flex-basis:45%}
+}
+
+/* V4.31 — Origin visual refinement only: real rectangular SVG flags and compact horizontal country/port fields. */
+.port-combo.origin-composite .origin-composite-row{
+  min-height:60px;align-items:stretch;overflow:visible;
+}
+.port-combo.origin-composite .origin-country-side,
+.port-combo.origin-composite .origin-port-side{
+  min-height:58px;align-items:center;padding-top:17px;box-sizing:border-box;
+}
+.port-combo.origin-composite .origin-country-side{flex:0 1 49%;padding-inline-start:12px;padding-inline-end:6px}
+.port-combo.origin-composite .origin-port-side{flex:1 1 51%;padding-inline-start:12px;padding-inline-end:5px}
+.port-combo.origin-composite .origin-internal-separator{
+  display:block;align-self:center;width:1px;height:30px;flex:none;
+  background:var(--input-border);opacity:.68;
+}
+.port-combo.origin-composite .origin-field-caption{
+  position:absolute;top:8px;inset-inline-start:12px;color:#567789;
+  font-size:10px;font-weight:650;line-height:1;white-space:nowrap;pointer-events:none;
+}
+.port-combo.origin-composite .origin-country-flag,
+.port-combo.origin-composite .origin-option-flag{
+  display:block;width:30px;height:22px;flex:none;object-fit:cover;
+  border-radius:3px;border:1px solid rgba(23,62,85,.12);
+  margin-inline-end:8px;background:#fff;font-size:0;
+}
+.port-combo.origin-composite .origin-country-flag[hidden],
+.port-combo.origin-composite .origin-option-flag[hidden]{display:none}
+.port-combo.origin-composite .origin-country-input,
+.port-combo.origin-composite .port-control input{
+  min-height:38px;height:38px;padding-top:4px;padding-bottom:4px;
+  font-size:14px;font-weight:700;text-overflow:ellipsis;
+}
+.port-combo.origin-composite .origin-country-option{gap:10px;min-height:43px}
+.port-combo.origin-composite .origin-country-option span:first-child{font-size:13px;line-height:1.35}
+.port-combo.origin-composite .port-control{width:100%}
+@media(max-width:760px){
+  .port-combo.origin-composite .origin-country-side{flex-basis:49%;padding-inline-start:9px;padding-inline-end:4px}
+  .port-combo.origin-composite .origin-port-side{flex-basis:51%;padding-inline-start:8px;padding-inline-end:3px}
+  .port-combo.origin-composite .origin-field-caption{inset-inline-start:9px}
+  .port-combo.origin-composite .origin-country-flag{width:25px;height:19px;margin-inline-end:5px}
+  .port-combo.origin-composite .origin-country-input,
+  .port-combo.origin-composite .port-control input{font-size:13px}
+}
+
+/* Shared country/seaport layout. Give the port name priority in both route fields. */
+.port-combo.origin-composite .origin-country-side{flex:0 0 42%;padding-inline-start:9px;padding-inline-end:4px}
+.port-combo.origin-composite .origin-port-side{flex:1 1 58%;padding-inline-start:7px;padding-inline-end:4px}
+.port-combo.origin-composite .origin-country-input{
+  flex:1 1 auto;min-width:0;padding-inline:3px!important;padding-left:3px!important;padding-right:3px!important;
+}
+.port-combo.origin-composite .origin-country-side.has-country:not(.editing-country) .origin-country-input{
+  position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;
+}
+.port-combo.origin-composite .origin-country-side .country-name-display{
+  display:block;flex:1;min-width:0;color:var(--input-ink);font-size:13px;font-weight:700;
+  line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:text;
+}
+.port-combo.origin-composite .origin-country-side .country-name-display[hidden],
+.port-combo.origin-composite .origin-country-side.editing-country .country-name-display{display:none}
+.port-combo.origin-composite .origin-country-side.editing-country .origin-country-input{
+  position:relative;opacity:1;pointer-events:auto;
+}
+@media(max-width:760px){
+  .port-combo.origin-composite .origin-country-side{flex-basis:42%;padding-inline-start:7px;padding-inline-end:3px}
+  .port-combo.origin-composite .origin-port-side{flex-basis:58%;padding-inline-start:6px;padding-inline-end:2px}
+  .port-combo.origin-composite .origin-country-side .country-name-display{font-size:12px}
+}
