@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /dashboard/
-Disallow: /server/
-Disallow: /api/
-
-Sitemap: https://akinternational.agency/sitemap.xml
